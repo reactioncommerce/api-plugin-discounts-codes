@@ -120,6 +120,9 @@ enum DiscountCalculationMethod {
 
   "Discount to shipping"
   shipping
+
+  "Discount to specific products"
+  product
 }
 
 "Input for an `ApplyDiscountCodeToCartInput`"

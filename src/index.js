@@ -3,6 +3,7 @@ import getCreditOffDiscount from "./util/getCreditOffDiscount.js";
 import getItemPriceDiscount from "./util/getItemPriceDiscount.js";
 import getPercentageOffDiscount from "./util/getPercentageOffDiscount.js";
 import getShippingDiscount from "./util/getShippingDiscount.js";
+import getProductDiscount from "./util/getProductDiscount.js";
 import mutations from "./mutations/index.js";
 import policies from "./policies.json";
 import queries from "./queries/index.js";
@@ -26,6 +27,7 @@ export default async function register(app) {
       "discounts/codes/discount": [getPercentageOffDiscount],
       "discounts/codes/sale": [getItemPriceDiscount],
       "discounts/codes/shipping": [getShippingDiscount],
+      "discounts/codes/product": [getProductDiscount],
       "startup": [startup]
     },
     graphQL: {
