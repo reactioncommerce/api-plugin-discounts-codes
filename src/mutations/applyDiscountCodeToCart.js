@@ -82,6 +82,10 @@ export default async function applyDiscountCodeToCart(context, input) {
     cart.billing = [];
   }
 
+  const isUsed = cart.billing.find((billing) => billing.data.discountId == discount._id);
+
+  if(isUsed) throw new ReactionError("error-ocurred", "Code is already in use");
+
   cart.billing.push({
     _id: Random.id(),
     amount: discount.discount,
