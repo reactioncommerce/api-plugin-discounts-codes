@@ -2,6 +2,7 @@ import SimpleSchema from "simpl-schema";
 import Random from "@reactioncommerce/random";
 import ReactionError from "@reactioncommerce/reaction-error";
 import getCart from "../util/getCart.js";
+import ensureDiscountCodeIsNotAlreadyApplied from "../util/ensureDiscountCodeIsNotAlreadyApplied.js";
 
 const inputSchema = new SimpleSchema({
   cartId: String,
@@ -77,6 +78,8 @@ export default async function applyDiscountCodeToCart(context, input) {
   if (accountLimitExceeded === true || discountLimitExceeded === true) {
     throw new ReactionError("error-occurred", "Code is expired");
   }
+
+  ensureDiscountCodeIsNotAlreadyApplied(discount, cart);
 
   if (!cart.billing) {
     cart.billing = [];
