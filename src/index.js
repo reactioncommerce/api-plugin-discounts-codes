@@ -1,3 +1,4 @@
+import pkg from "../package.json";
 import i18n from "./i18n/index.js";
 import getCreditOffDiscount from "./util/getCreditOffDiscount.js";
 import getItemPriceDiscount from "./util/getItemPriceDiscount.js";
@@ -19,7 +20,7 @@ export default async function register(app) {
   await app.registerPlugin({
     label: "Discount Codes",
     name: "discounts-codes",
-    version: app.context.appVersion,
+    version: pkg.version,
     i18n,
     functionsByType: {
       "discounts/codes/credit": [getCreditOffDiscount],
